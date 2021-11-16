@@ -1,0 +1,232 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+html, body {
+  width: 100%;
+  font-family: sans-serif;
+}
+
+.wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1230px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.main__game {
+  width: 100%;
+  padding: 20px;
+}
+
+.game__field {
+  padding: 25px;
+  width: 100%;
+  height: 700px;
+  border: 2px solid #43aa8b;
+  display: grid;
+  grid-template: 1fr 1fr/repeat(6, 1fr);
+  gap: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: 0.4s;
+  transform-style: preserve-3d;
+}
+
+.card__inner._activated {
+  transform: rotateY(180deg);
+}
+
+.card__inner._showed {
+  transform: rotateY(180deg);
+}
+
+.card__inner.banana .card__back {
+  background: #f8961e url("../img/bananas.svg") center/contain no-repeat;
+}
+
+.card__inner.apple .card__back {
+  background: #f8961e url("../img/apple.svg") center/contain no-repeat;
+}
+
+.card__inner.kiwi .card__back {
+  background: #f8961e url("../img/kiwi.svg") center/contain no-repeat;
+}
+
+.card__inner.egg .card__back {
+  background: #f8961e url("../img/egg.svg") center/contain no-repeat;
+}
+
+.card__inner.mushroom .card__back {
+  background: #f8961e url("../img/mushroom.svg") center/contain no-repeat;
+}
+
+.card__inner.olive .card__back {
+  background: #f8961e url("../img/olive.svg") center/contain no-repeat;
+}
+
+.card__front, .card__back {
+  border-radius: 8px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card__front {
+  background: #43aa8b;
+}
+
+.card__back {
+  background: #f8961e;
+  transform: rotateY(180deg);
+}
+
+.win {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.4s;
+}
+
+.win._is-win {
+  opacity: 1;
+  visibility: visible;
+}
+
+.win__back {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.win__window {
+  position: absolute;
+  width: 500px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #f94144;
+}
+
+.win__body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.win__text {
+  font-size: 30px;
+  color: #f94144;
+  margin-bottom: 40px;
+}
+
+.win__button {
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  background: #f94144;
+  border-radius: 20px;
+  padding: 20px 50px;
+  transition: 0.3s;
+}
+
+@media (any-hover: hover) {
+  .win__button:hover {
+    background: #fff;
+    color: #f94144;
+    box-shadow: 0 0 20px #f94144;
+  }
+}

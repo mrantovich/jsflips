@@ -1,0 +1,189 @@
+@import 'nullstyle';
+@import 'colors';
+@import 'fonts';
+
+html, body {
+	width: 100%;
+	font-family: sans-serif;
+}
+
+.wrapper {
+	width: 100%;
+	overflow: hidden;
+}
+
+.container {
+	max-width: 1230px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.main {
+
+	&__game {
+		width: 100%;
+		padding: 20px;
+	}
+}
+
+.game {
+
+	&__field {
+		padding: 25px;
+		width: 100%;
+		height: 700px;
+		border: 2px solid $color-green;
+
+		display: grid;
+		grid-template: 1fr 1fr / repeat(6, 1fr);
+		gap: 25px;
+
+		position: relative;
+		z-index: 1;
+	}
+
+	&__card {
+	}
+}
+
+.card {
+	cursor: pointer;
+	perspective: 1000px;
+
+	&__inner {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		transition: 0.4s;
+		transform-style: preserve-3d;
+
+		&._activated {
+			transform: rotateY(180deg);
+		}
+
+		&._showed {
+			transform: rotateY(180deg);
+		}
+
+		&.banana {
+			.card__back {
+				background: $color-orange url('../img/bananas.svg') center / contain no-repeat;
+			}
+		}
+
+		&.apple {
+			.card__back {
+				background: $color-orange url('../img/apple.svg') center / contain no-repeat;
+			}
+		}
+
+		&.kiwi {
+			.card__back {
+				background: $color-orange url('../img/kiwi.svg') center / contain no-repeat;
+			}
+		}
+
+		&.egg {
+			.card__back {
+				background: $color-orange url('../img/egg.svg') center / contain no-repeat;
+			}
+		}
+
+		&.mushroom {
+			.card__back {
+				background: $color-orange url('../img/mushroom.svg') center / contain no-repeat;
+			}
+		}
+
+		&.olive {
+			.card__back {
+				background: $color-orange url('../img/olive.svg') center / contain no-repeat;
+			}
+		}
+	}
+	
+	&__front, &__back {
+		border-radius: 8px;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		backface-visibility: hidden;
+	}
+
+	&__front {
+		background: $color-green;
+	}
+
+	&__back {
+		background: $color-orange;
+		transform: rotateY(180deg);
+	}
+}
+
+.win {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.4s;
+
+	&._is-win {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&__back {
+		width: 100%;
+		height: 100%;
+		background: rgba(#000, 0.7);
+	}
+
+	&__window {
+		position: absolute;
+		width: 500px;
+		height: 300px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background: $white;
+		border-radius: 20px;
+		box-shadow: 0 0 10px $color-red;
+	}
+
+	&__body {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__text {
+		font-size: 30px;
+		color: $color-red;
+		margin-bottom: 40px;
+	}
+
+	&__button {
+		font-size: 32px;
+		font-weight: bold;
+		color: $white;
+		background: $color-red;
+		border-radius: 20px;
+		padding: 20px 50px;
+		transition: 0.3s;
+
+		@media (any-hover: hover) {
+			&:hover {
+				background: $white;
+				color: $color-red;
+				box-shadow: 0 0 20px $color-red;
+			}
+		}
+	}
+}
+
