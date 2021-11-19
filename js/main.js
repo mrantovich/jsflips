@@ -8,31 +8,36 @@ winButton.addEventListener('click', function() {
     });
     let overlay = document.querySelector('.win');
     overlay.classList.remove('_is-win');
+    shuffleCards();
+    placeCardPairs();
 });
 
-let imgArray = ['apple', 'apple', 'banana', 'banana', 'kiwi', 'kiwi', 'mushroom', 'mushroom', 'olive', 'olive', 'egg', 'egg'];
 
-// Place pairs of cards with correspondence classes.
-for (let i = 0; i < cardsCollection.length; i++) {
-    let card = cardsCollection[i];
+function placeCardPairs() {
+    let imgArray = ['apple', 'apple', 'banana', 'banana', 'kiwi', 'kiwi', 'mushroom', 'mushroom', 'olive', 'olive', 'egg', 'egg'];
+    // Place pairs of cards with correspondence classes.
+    for (let i = 0; i < cardsCollection.length; i++) {
+        let card = cardsCollection[i];
 
-    let randomItem = imgArray[getRandomInt(0, imgArray.length - 1)];
-    let randomItemIndex = imgArray.indexOf(randomItem);
-    imgArray.splice(randomItemIndex, 1);
+        let randomItem = imgArray[getRandomInt(0, imgArray.length - 1)];
+        let randomItemIndex = imgArray.indexOf(randomItem);
+        imgArray.splice(randomItemIndex, 1);
 
-    card.classList.add(randomItem);
+        card.classList.add(randomItem);
 
-    card.addEventListener('click', makeCardActivated);
+        card.addEventListener('click', makeCardActivated);
+    };
+}
 
-    function makeCardActivated(e) {
-        e.currentTarget.classList.toggle('_activated');
-        compareCards(e.currentTarget);
-        if (document.querySelectorAll('._showed').length === 12) {
-            setTimeout(function() {
-                let overlay = document.querySelector('.win');
-                overlay.classList.add('_is-win');
-            }, 500);
-        };
+
+function makeCardActivated(e) {
+    e.currentTarget.classList.toggle('_activated');
+    compareCards(e.currentTarget);
+    if (document.querySelectorAll('._showed').length === 12) {
+        setTimeout(function() {
+            let overlay = document.querySelector('.win');
+            overlay.classList.add('_is-win');
+        }, 500);
     };
 };
 
@@ -71,3 +76,16 @@ function compareCards(currentCard) {
     };
 
 };
+
+function shuffleCards() {
+    let imgArray = ['apple', 'apple', 'banana', 'banana', 'kiwi', 'kiwi', 'mushroom', 'mushroom', 'olive', 'olive', 'egg', 'egg'];
+    cardsCollection.forEach(function(item) {
+        imgArray.forEach(function(iitem) {
+            if (item.classList.contains(iitem)) {
+                item.classList.remove(iitem);
+            }
+        });
+    });
+};
+
+placeCardPairs();
